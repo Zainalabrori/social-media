@@ -29,7 +29,7 @@
     </header>
 
     <section id="social-media-container" class="grid grid-cols-5 gap-4 p-6 justify-items-center">
-      <!-- Realistic social icons inserted here -->
+      <!-- Icons will be inserted here -->
     </section>
   </main>
 
@@ -41,47 +41,41 @@
       const socialMedia = [
         {
           name: "WhatsApp",
+          url: "https://wa.me/6285745750951",
           color: "bg-green-500 dark:bg-green-600",
           lightIcon: '<img src="https://cdn.simpleicons.org/whatsapp/25D366" alt="WhatsApp" class="h-5 w-5 z-10 dark:hidden">',
           darkIcon: '<img src="https://cdn.simpleicons.org/whatsapp/FFFFFF" alt="WhatsApp" class="h-5 w-5 z-10 hidden dark:block">'
         },
         {
           name: "Facebook",
+          url: "https://web.facebook.com/profile.php?id=61555485188839",
           color: "bg-blue-600 dark:bg-blue-700",
           lightIcon: '<img src="https://cdn.simpleicons.org/facebook/1877F2" alt="Facebook" class="h-5 w-5 z-10 dark:hidden">',
           darkIcon: '<img src="https://cdn.simpleicons.org/facebook/FFFFFF" alt="Facebook" class="h-5 w-5 z-10 hidden dark:block">'
         },
         {
           name: "Instagram",
+          url: "https://www.instagram.com/zainal_abrori1/",
           color: "bg-pink-500 dark:bg-pink-600",
           lightIcon: '<img src="https://cdn.simpleicons.org/instagram/E4405F" alt="Instagram" class="h-5 w-5 z-10 dark:hidden">',
           darkIcon: '<img src="https://cdn.simpleicons.org/instagram/FFFFFF" alt="Instagram" class="h-5 w-5 z-10 hidden dark:block">'
         },
         {
           name: "Threads",
+          url: "https://www.threads.net/@zainal_abrori1",
           color: "bg-black dark:bg-white",
           lightIcon: '<img src="https://cdn.simpleicons.org/threads/000000" alt="Threads" class="h-5 w-5 z-10 dark:hidden">',
           darkIcon: '<img src="https://cdn.simpleicons.org/threads/FFFFFF" alt="Threads" class="h-5 w-5 z-10 hidden dark:block">'
         },
         {
           name: "LinkedIn",
+          url: "https://www.linkedin.com/in/zainal-abrori-bb242829b/",
           color: "bg-blue-700 dark:bg-blue-800",
-          lightIcon: `
-            <svg class="h-5 w-5 z-10 fill-[#0A66C2] dark:hidden" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <title>LinkedIn</title>
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.327-.025-3.038-1.85-3.038-1.853 0-2.136 1.446-2.136 2.94v5.667H9.354V9h3.413v1.561h.048c.476-.9 1.637-1.85 3.368-1.85 3.598 0 4.262 2.367 4.262 5.448v6.293zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.123 20.452H3.554V9h3.569zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
-            </svg>
-          `,
-          darkIcon: `
-            <svg class="h-5 w-5 z-10 fill-white hidden dark:block" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <title>LinkedIn</title>
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.327-.025-3.038-1.85-3.038-1.853 0-2.136 1.446-2.136 2.94v5.667H9.354V9h3.413v1.561h.048c.476-.9 1.637-1.85 3.368-1.85 3.598 0 4.262 2.367 4.262 5.448v6.293zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.123 20.452H3.554V9h3.569zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
-            </svg>
-          `
+          lightIcon: '<svg class="h-5 w-5 z-10 fill-[#0A66C2] dark:hidden" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.327-.025-3.038-1.85-3.038-1.853 0-2.136 1.446-2.136 2.94v5.667H9.354V9h3.413v1.561h.048c.476-.9 1.637-1.85 3.368-1.85 3.598 0 4.262 2.367 4.262 5.448v6.293zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.123 20.452H3.554V9h3.569zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>',
+          darkIcon: '<svg class="h-5 w-5 z-10 fill-white hidden dark:block" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.327-.025-3.038-1.85-3.038-1.853 0-2.136 1.446-2.136 2.94v5.667H9.354V9h3.413v1.561h.048c.476-.9 1.637-1.85 3.368-1.85 3.598 0 4.262 2.367 4.262 5.448v6.293zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.123 20.452H3.554V9h3.569zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>'
         }
       ];
 
-      // Load dark mode
       let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
       if (localStorage.getItem('theme') === 'dark') isDarkMode = true;
       if (localStorage.getItem('theme') === 'light') isDarkMode = false;
@@ -106,9 +100,13 @@
 
         const overlay = document.createElement('div');
         overlay.className = `absolute inset-0 ${platform.color} opacity-0 group-hover:opacity-90 transition-opacity duration-200 z-0 rounded-full`;
-        
-        // Add both light and dark mode icons
+
         iconWrapper.innerHTML = overlay.outerHTML + platform.lightIcon + platform.darkIcon;
+
+        iconWrapper.addEventListener('click', () => {
+          window.open(platform.url, '_blank');
+        });
+
         container.appendChild(iconWrapper);
       });
     });
