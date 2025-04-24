@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Social Media Links</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 font-sans min-h-screen flex items-center justify-center p-6 transition-colors duration-300">
+  <main class="w-full max-w-md bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-md overflow-hidden transition-all duration-300">
+    <header class="flex justify-between items-center p-4 border-b border-gray-100 dark:border-gray-700">
+      <h1 class="text-lg font-semibold">Connect with us</h1>
+      <button id="dark-mode-toggle" class="p-2 rounded-md bg-gray-100 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+        <span id="toggle-icon">🌙</span>
+      </button>
+    </header>
+
+    <section id="social-media-container" class="grid grid-cols-5 gap-4 p-6 justify-items-center">
+      <!-- Realistic social icons inserted here -->
+    </section>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const toggleButton = document.getElementById('dark-mode-toggle');
+      const toggleIcon = document.getElementById('toggle-icon');
+
+      const socialMedia = [
+        {
+          name: "WhatsApp",
+          color: "bg-green-500 dark:bg-green-600",
+          lightIcon: '<img src="https://cdn.simpleicons.org/whatsapp/25D366" alt="WhatsApp" class="h-5 w-5 z-10 dark:hidden">',
+          darkIcon: '<img src="https://cdn.simpleicons.org/whatsapp/FFFFFF" alt="WhatsApp" class="h-5 w-5 z-10 hidden dark:block">'
+        },
+        {
+          name: "Facebook",
+          color: "bg-blue-600 dark:bg-blue-700",
+          lightIcon: '<img src="https://cdn.simpleicons.org/facebook/1877F2" alt="Facebook" class="h-5 w-5 z-10 dark:hidden">',
+          darkIcon: '<img src="https://cdn.simpleicons.org/facebook/FFFFFF" alt="Facebook" class="h-5 w-5 z-10 hidden dark:block">'
+        },
+        {
+          name: "Instagram",
+          color: "bg-pink-500 dark:bg-pink-600",
+          lightIcon: '<img src="https://cdn.simpleicons.org/instagram/E4405F" alt="Instagram" class="h-5 w-5 z-10 dark:hidden">',
+          darkIcon: '<img src="https://cdn.simpleicons.org/instagram/FFFFFF" alt="Instagram" class="h-5 w-5 z-10 hidden dark:block">'
+        },
+        {
+          name: "Threads",
+          color: "bg-black dark:bg-white",
+          lightIcon: '<img src="https://cdn.simpleicons.org/threads/000000" alt="Threads" class="h-5 w-5 z-10 dark:hidden">',
+          darkIcon: '<img src="https://cdn.simpleicons.org/threads/FFFFFF" alt="Threads" class="h-5 w-5 z-10 hidden dark:block">'
+        },
+        {
+          name: "LinkedIn",
+          color: "bg-blue-700 dark:bg-blue-800",
+          lightIcon: `
+            <svg class="h-5 w-5 z-10 fill-[#0A66C2] dark:hidden" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <title>LinkedIn</title>
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.327-.025-3.038-1.85-3.038-1.853 0-2.136 1.446-2.136 2.94v5.667H9.354V9h3.413v1.561h.048c.476-.9 1.637-1.85 3.368-1.85 3.598 0 4.262 2.367 4.262 5.448v6.293zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.123 20.452H3.554V9h3.569zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
+            </svg>
+          `,
+          darkIcon: `
+            <svg class="h-5 w-5 z-10 fill-white hidden dark:block" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <title>LinkedIn</title>
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.327-.025-3.038-1.85-3.038-1.853 0-2.136 1.446-2.136 2.94v5.667H9.354V9h3.413v1.561h.048c.476-.9 1.637-1.85 3.368-1.85 3.598 0 4.262 2.367 4.262 5.448v6.293zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.123 20.452H3.554V9h3.569zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/>
+            </svg>
+          `
+        }
+      ];
+
+      // Load dark mode
+      let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (localStorage.getItem('theme') === 'dark') isDarkMode = true;
+      if (localStorage.getItem('theme') === 'light') isDarkMode = false;
+      document.documentElement.classList.toggle('dark', isDarkMode);
+      toggleIcon.textContent = isDarkMode ? '☀️' : '🌙';
+
+      toggleButton.addEventListener('click', () => {
+        isDarkMode = !isDarkMode;
+        document.documentElement.classList.toggle('dark', isDarkMode);
+        toggleIcon.textContent = isDarkMode ? '☀️' : '🌙';
+        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+      });
+
+      const container = document.getElementById('social-media-container');
+      socialMedia.forEach(platform => {
+        const iconWrapper = document.createElement('div');
+        iconWrapper.className = `
+          relative group flex items-center justify-center h-12 w-12 rounded-full 
+          border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 
+          hover:scale-105 transform transition duration-200 cursor-pointer overflow-hidden shadow-sm`;
+        iconWrapper.title = platform.name;
+
+        const overlay = document.createElement('div');
+        overlay.className = `absolute inset-0 ${platform.color} opacity-0 group-hover:opacity-90 transition-opacity duration-200 z-0 rounded-full`;
+        
+        // Add both light and dark mode icons
+        iconWrapper.innerHTML = overlay.outerHTML + platform.lightIcon + platform.darkIcon;
+        container.appendChild(iconWrapper);
+      });
+    });
+  </script>
+</body>
+</html>
