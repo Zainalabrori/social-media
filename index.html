@@ -1,51 +1,106 @@
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Social Media Links</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
   <script>
     tailwind.config = {
-      darkMode: 'class',
+      darkMode: "class",
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Inter', 'sans-serif']
-          }
-        }
-      }
-    }
+            sans: ["Inter", "sans-serif"],
+          },
+        },
+      },
+    };
   </script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <style>
     @keyframes flicker {
-      0% { transform: rotate(-1deg) scale(1.05) translate(-1px, 1px); opacity: 0.7; filter: blur(0.5px); }
-      25% { transform: rotate(1deg) scale(1.08) translate(1px, -0.5px); opacity: 0.75; filter: blur(0.3px); }
-      50% { transform: rotate(-0.5deg) scale(1.12) translate(-0.5px, -1px); opacity: 0.8; filter: blur(0.4px); }
-      75% { transform: rotate(1.2deg) scale(1.07) translate(0.5px, 0.5px); opacity: 0.77; filter: blur(0.5px); }
-      100% { transform: rotate(-1deg) scale(1.05) translate(-1px, 1px); opacity: 0.7; filter: blur(0.5px); }
+      0% {
+        transform: rotate(-1deg) scale(1.05) translate(-1px, 1px);
+        opacity: 0.7;
+        filter: blur(0.5px);
+      }
+
+      25% {
+        transform: rotate(1deg) scale(1.08) translate(1px, -0.5px);
+        opacity: 0.75;
+        filter: blur(0.3px);
+      }
+
+      50% {
+        transform: rotate(-0.5deg) scale(1.12) translate(-0.5px, -1px);
+        opacity: 0.8;
+        filter: blur(0.4px);
+      }
+
+      75% {
+        transform: rotate(1.2deg) scale(1.07) translate(0.5px, 0.5px);
+        opacity: 0.77;
+        filter: blur(0.5px);
+      }
+
+      100% {
+        transform: rotate(-1deg) scale(1.05) translate(-1px, 1px);
+        opacity: 0.7;
+        filter: blur(0.5px);
+      }
     }
-    
+
     @keyframes float {
-      0% { transform: translateY(0) rotate(0); opacity: 0.3; }
-      50% { transform: translateY(-15px) rotate(5deg); opacity: 0; }
-      100% { transform: translateY(-30px) rotate(-5deg); opacity: 0; }
+      0% {
+        transform: translateY(0) rotate(0);
+        opacity: 0.3;
+      }
+
+      50% {
+        transform: translateY(-15px) rotate(5deg);
+        opacity: 0;
+      }
+
+      100% {
+        transform: translateY(-30px) rotate(-5deg);
+        opacity: 0;
+      }
     }
-    
+
     @keyframes glow {
-      0% { box-shadow: 0 0 5px 2px rgba(255, 165, 0, 0.3); }
-      50% { box-shadow: 0 0 8px 4px rgba(255, 165, 0, 0.5); }
-      100% { box-shadow: 0 0 5px 2px rgba(255, 165, 0, 0.3); }
+      0% {
+        box-shadow: 0 0 5px 2px rgba(255, 165, 0, 0.3);
+      }
+
+      50% {
+        box-shadow: 0 0 8px 4px rgba(255, 165, 0, 0.5);
+      }
+
+      100% {
+        box-shadow: 0 0 5px 2px rgba(255, 165, 0, 0.3);
+      }
     }
-    
+
     @keyframes burn {
-      0% { transform: scale(1) rotate(0deg); filter: brightness(1); }
-      50% { transform: scale(0.92) rotate(1deg); filter: brightness(1.5); }
-      100% { transform: scale(1) rotate(0deg); filter: brightness(1); }
+      0% {
+        transform: scale(1) rotate(0deg);
+        filter: brightness(1);
+      }
+
+      50% {
+        transform: scale(0.92) rotate(1deg);
+        filter: brightness(1.5);
+      }
+
+      100% {
+        transform: scale(1) rotate(0deg);
+        filter: brightness(1);
+      }
     }
-    
+
     .flame {
       position: absolute;
       bottom: -45%;
@@ -60,7 +115,7 @@
       mix-blend-mode: screen;
       filter: blur(1px);
     }
-    
+
     .flame-inner {
       position: absolute;
       bottom: 5%;
@@ -73,7 +128,7 @@
       mix-blend-mode: lighten;
       filter: blur(0.5px);
     }
-    
+
     .ember {
       position: absolute;
       width: 2px;
@@ -86,213 +141,236 @@
       filter: blur(0.5px);
       pointer-events: none;
     }
-    
+
     .burn-wrapper {
       position: relative;
       transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
-    
+
     .burn-wrapper:hover {
       transform: scale(1.08);
     }
-    
+
     .burn-wrapper:hover .flame {
       opacity: 1;
       animation: flicker 0.6s infinite alternate;
     }
-    
+
     .burn-wrapper:hover .flame-inner {
       animation: flicker 0.5s infinite alternate 0.15s;
     }
-    
+
     .burn-wrapper:hover .icon-element {
       animation: burn 0.8s infinite alternate;
     }
-    
+
     .burn-wrapper:hover {
       animation: glow 1.5s infinite alternate;
     }
-    
+
     .icon-element {
       transition: all 0.3s ease;
       z-index: 10;
       position: relative;
     }
-    
-    .burn-wrapper:active .flame, 
+
+    .burn-wrapper:active .flame,
     .burn-wrapper:active .flame-inner {
       transform: scale(1.3) translateY(-5px);
       transition: transform 0.2s ease-out;
     }
-    
+
     .burn-wrapper:active .icon-element {
       transform: scale(0.8);
       filter: brightness(1.8);
     }
   </style>
 </head>
-<body class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 font-sans min-h-screen flex items-center justify-center p-6 transition-colors duration-300">
-  <main class="w-full max-w-md bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-md overflow-hidden transition-all duration-300">
+
+<body
+  class="bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-100 font-sans min-h-screen flex items-center justify-center p-6 transition-colors duration-300">
+  <main
+    class="w-full max-w-md bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-md overflow-hidden transition-all duration-300">
     <header class="flex justify-between items-center p-4 border-b border-gray-100 dark:border-gray-700">
       <h1 class="text-lg font-semibold">Connect with me</h1>
-      <button id="dark-mode-toggle" class="p-2 rounded-md bg-gray-100 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
-        <span id="toggle-icon">🌙</span>
+      <button id="dark-mode-toggle"
+        class="p-2 rounded-md bg-gray-100 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors">
+        <!-- <span id="toggle-icon">🌙</span> -->
+        <img id="toggle-icon" src="./dark_mode/night.png" alt="Toggle Theme" class="w-5 h-5" />
       </button>
     </header>
 
     <section id="social-media-container" class="grid grid-cols-5 gap-4 p-6 justify-items-center">
       <!-- Icons will be inserted here -->
     </section>
-    
+
     <div id="fire-canvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 opacity-0"></div>
   </main>
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const toggleButton = document.getElementById('dark-mode-toggle');
-      const toggleIcon = document.getElementById('toggle-icon');
+    document.addEventListener("DOMContentLoaded", () => {
+      const toggleButton = document.getElementById("dark-mode-toggle");
+      const toggleIcon = document.getElementById("toggle-icon");
+
+      // Tentukan gambar yang digunakan
+      const moonIcon = "./dark_mode/night.png";
+      const sunIcon = "./dark_mode/sun.png";
 
       const socialMedia = [
         {
           name: "WhatsApp",
           url: "https://wa.me/6285745750951",
-          lightIcon: '<img src="https://cdn.simpleicons.org/whatsapp/25D366" alt="WhatsApp" class="h-5 w-5 icon-element dark:hidden">',
-          darkIcon: '<img src="https://cdn.simpleicons.org/whatsapp/FFFFFF" alt="WhatsApp" class="h-5 w-5 icon-element hidden dark:block">',
+          lightIcon:
+            '<img src="https://cdn.simpleicons.org/whatsapp/25D366" alt="WhatsApp" class="h-5 w-5 icon-element dark:hidden">',
+          darkIcon:
+            '<img src="https://cdn.simpleicons.org/whatsapp/FFFFFF" alt="WhatsApp" class="h-5 w-5 icon-element hidden dark:block">',
           color: "bg-[#25D366]",
           flameColor: "from-green-500 via-green-400 to-yellow-300",
           emberColor: "#7CFC00",
-          soundEffect: "fire-crackle-1.mp3"
+          soundEffect: "fire-crackle-1.mp3",
         },
         {
           name: "Facebook",
           url: "https://web.facebook.com/profile.php?id=61555485188839",
-          lightIcon: '<img src="https://cdn.simpleicons.org/facebook/1877F2" alt="Facebook" class="h-5 w-5 icon-element dark:hidden">',
-          darkIcon: '<img src="https://cdn.simpleicons.org/facebook/FFFFFF" alt="Facebook" class="h-5 w-5 icon-element hidden dark:block">',
+          lightIcon:
+            '<img src="https://cdn.simpleicons.org/facebook/1877F2" alt="Facebook" class="h-5 w-5 icon-element dark:hidden">',
+          darkIcon:
+            '<img src="https://cdn.simpleicons.org/facebook/FFFFFF" alt="Facebook" class="h-5 w-5 icon-element hidden dark:block">',
           color: "bg-[#1877F2]",
           flameColor: "from-blue-500 via-blue-400 to-yellow-300",
           emberColor: "#1E90FF",
-          soundEffect: "fire-crackle-2.mp3"
+          soundEffect: "fire-crackle-2.mp3",
         },
         {
           name: "Instagram",
           url: "https://www.instagram.com/zainal_abrori1/",
-          lightIcon: '<img src="https://cdn.simpleicons.org/instagram/E4405F" alt="Instagram" class="h-5 w-5 icon-element dark:hidden">',
-          darkIcon: '<img src="https://cdn.simpleicons.org/instagram/FFFFFF" alt="Instagram" class="h-5 w-5 icon-element hidden dark:block">',
+          lightIcon:
+            '<img src="https://cdn.simpleicons.org/instagram/E4405F" alt="Instagram" class="h-5 w-5 icon-element dark:hidden">',
+          darkIcon:
+            '<img src="https://cdn.simpleicons.org/instagram/FFFFFF" alt="Instagram" class="h-5 w-5 icon-element hidden dark:block">',
           color: "bg-[#E4405F]",
           flameColor: "from-pink-500 via-pink-400 to-yellow-300",
           emberColor: "#FF69B4",
-          soundEffect: "fire-crackle-3.mp3"
+          soundEffect: "fire-crackle-3.mp3",
         },
         {
           name: "Threads",
           url: "https://www.threads.net/@zainal_abrori1",
-          lightIcon: '<img src="https://cdn.simpleicons.org/threads/000000" alt="Threads" class="h-5 w-5 icon-element dark:hidden">',
-          darkIcon: '<img src="https://cdn.simpleicons.org/threads/FFFFFF" alt="Threads" class="h-5 w-5 icon-element hidden dark:block">',
+          lightIcon:
+            '<img src="https://cdn.simpleicons.org/threads/000000" alt="Threads" class="h-5 w-5 icon-element dark:hidden">',
+          darkIcon:
+            '<img src="https://cdn.simpleicons.org/threads/FFFFFF" alt="Threads" class="h-5 w-5 icon-element hidden dark:block">',
           color: "bg-black",
           flameColor: "from-purple-800 via-purple-500 to-yellow-300",
           emberColor: "#800080",
-          soundEffect: "fire-crackle-4.mp3"
+          soundEffect: "fire-crackle-4.mp3",
         },
         {
           name: "LinkedIn",
           url: "https://www.linkedin.com/in/zainal-abrori-bb242829b/",
-          lightIcon: '<svg class="h-5 w-5 icon-element fill-[#0A66C2] dark:hidden" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.327-.025-3.038-1.85-3.038-1.853 0-2.136 1.446-2.136 2.94v5.667H9.354V9h3.413v1.561h.048c.476-.9 1.637-1.85 3.368-1.85 3.598 0 4.262 2.367 4.262 5.448v6.293zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.123 20.452H3.554V9h3.569zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>',
-          darkIcon: '<svg class="h-5 w-5 icon-element fill-white hidden dark:block" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.327-.025-3.038-1.85-3.038-1.853 0-2.136 1.446-2.136 2.94v5.667H9.354V9h3.413v1.561h.048c.476-.9 1.637-1.85 3.368-1.85 3.598 0 4.262 2.367 4.262 5.448v6.293zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.123 20.452H3.554V9h3.569zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>',
+          lightIcon:
+            '<svg class="h-5 w-5 icon-element fill-[#0A66C2] dark:hidden" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.327-.025-3.038-1.85-3.038-1.853 0-2.136 1.446-2.136 2.94v5.667H9.354V9h3.413v1.561h.048c.476-.9 1.637-1.85 3.368-1.85 3.598 0 4.262 2.367 4.262 5.448v6.293zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.123 20.452H3.554V9h3.569zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>',
+          darkIcon:
+            '<svg class="h-5 w-5 icon-element fill-white hidden dark:block" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>LinkedIn</title><path d="M20.447 20.452h-3.554v-5.569c0-1.327-.025-3.038-1.85-3.038-1.853 0-2.136 1.446-2.136 2.94v5.667H9.354V9h3.413v1.561h.048c.476-.9 1.637-1.85 3.368-1.85 3.598 0 4.262 2.367 4.262 5.448v6.293zM5.337 7.433a2.062 2.062 0 1 1 0-4.124 2.062 2.062 0 0 1 0 4.124zM7.123 20.452H3.554V9h3.569zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg>',
           color: "bg-[#0A66C2]",
           flameColor: "from-blue-600 via-blue-500 to-yellow-300",
           emberColor: "#4169E1",
-          soundEffect: "fire-crackle-5.mp3"
-        }
+          soundEffect: "fire-crackle-5.mp3",
+        },
       ];
 
-      let isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if (localStorage.getItem('theme') === 'dark') isDarkMode = true;
-      if (localStorage.getItem('theme') === 'light') isDarkMode = false;
-      document.documentElement.classList.toggle('dark', isDarkMode);
-      toggleIcon.textContent = isDarkMode ? '☀️' : '🌙';
+      let isDarkMode = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+      if (localStorage.getItem("theme") === "dark") isDarkMode = true;
+      if (localStorage.getItem("theme") === "light") isDarkMode = false;
+      document.documentElement.classList.toggle("dark", isDarkMode);
+      // toggleIcon.textContent = isDarkMode ? "☀️" : "🌙";
+      toggleIcon.src = isDarkMode ? sunIcon : moonIcon;
 
-      toggleButton.addEventListener('click', () => {
+      toggleButton.addEventListener("click", () => {
         isDarkMode = !isDarkMode;
-        document.documentElement.classList.toggle('dark', isDarkMode);
-        toggleIcon.textContent = isDarkMode ? '☀️' : '🌙';
-        localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+        document.documentElement.classList.toggle("dark", isDarkMode);
+        // toggleIcon.textContent = isDarkMode ? "☀️" : "🌙";
+        toggleIcon.src = isDarkMode ? sunIcon : moonIcon;
+        localStorage.setItem("theme", isDarkMode ? "dark" : "light");
       });
 
       // Create audio elements for fire sounds (preloaded but muted)
       const audioElements = {};
-      
+
       function createFireEmbers(iconWrapper, emberColor) {
         // Create multiple embers with random positions
         for (let i = 0; i < 5; i++) {
-          const ember = document.createElement('div');
-          ember.className = 'ember';
+          const ember = document.createElement("div");
+          ember.className = "ember";
           ember.style.left = `${30 + Math.random() * 40}%`;
           ember.style.backgroundColor = emberColor;
           iconWrapper.appendChild(ember);
         }
       }
-      
+
       function animateEmbers(iconWrapper) {
-        const embers = iconWrapper.querySelectorAll('.ember');
+        const embers = iconWrapper.querySelectorAll(".ember");
         embers.forEach((ember, index) => {
           const delay = index * 100;
           const duration = 1000 + Math.random() * 1000;
-          
+
           setTimeout(() => {
-            ember.style.opacity = '0.8';
+            ember.style.opacity = "0.8";
             ember.style.animation = `float ${duration}ms ease-out forwards`;
-            
+
             // Reset after animation
             setTimeout(() => {
-              ember.style.opacity = '0';
-              ember.style.animation = '';
-              ember.style.transform = 'translateY(0) rotate(0)';
-              
+              ember.style.opacity = "0";
+              ember.style.animation = "";
+              ember.style.transform = "translateY(0) rotate(0)";
+
               // Only restart if still hovering
-              if (iconWrapper.matches(':hover')) {
+              if (iconWrapper.matches(":hover")) {
                 setTimeout(() => animateEmber(ember), Math.random() * 300);
               }
             }, duration);
           }, delay);
         });
       }
-      
+
       function animateEmber(ember) {
         const duration = 1000 + Math.random() * 1000;
-        ember.style.opacity = '0.8';
+        ember.style.opacity = "0.8";
         ember.style.animation = `float ${duration}ms ease-out forwards`;
-        
+
         setTimeout(() => {
-          ember.style.opacity = '0';
-          ember.style.animation = '';
-          ember.style.transform = 'translateY(0) rotate(0)';
+          ember.style.opacity = "0";
+          ember.style.animation = "";
+          ember.style.transform = "translateY(0) rotate(0)";
         }, duration);
       }
-      
+
       function createShockwave(x, y, color) {
-        const shockwave = document.createElement('div');
-        shockwave.style.position = 'fixed';
+        const shockwave = document.createElement("div");
+        shockwave.style.position = "fixed";
         shockwave.style.left = `${x}px`;
         shockwave.style.top = `${y}px`;
-        shockwave.style.width = '10px';
-        shockwave.style.height = '10px';
-        shockwave.style.borderRadius = '50%';
-        shockwave.style.backgroundColor = 'transparent';
+        shockwave.style.width = "10px";
+        shockwave.style.height = "10px";
+        shockwave.style.borderRadius = "50%";
+        shockwave.style.backgroundColor = "transparent";
         shockwave.style.border = `2px solid ${color}`;
-        shockwave.style.transform = 'translate(-50%, -50%)';
-        shockwave.style.zIndex = '1000';
-        shockwave.style.pointerEvents = 'none';
-        shockwave.style.opacity = '0.7';
-        
+        shockwave.style.transform = "translate(-50%, -50%)";
+        shockwave.style.zIndex = "1000";
+        shockwave.style.pointerEvents = "none";
+        shockwave.style.opacity = "0.7";
+
         document.body.appendChild(shockwave);
-        
+
         // Animate the shockwave
         let scale = 1;
         const animation = setInterval(() => {
           scale += 0.5;
           shockwave.style.transform = `translate(-50%, -50%) scale(${scale})`;
           shockwave.style.opacity = Math.max(0, 0.7 - scale * 0.07);
-          
+
           if (scale >= 10) {
             clearInterval(animation);
             document.body.removeChild(shockwave);
@@ -300,48 +378,54 @@
         }, 20);
       }
 
-      const container = document.getElementById('social-media-container');
-      socialMedia.forEach(platform => {
-        const iconWrapper = document.createElement('div');
-        iconWrapper.className = "relative burn-wrapper group flex items-center justify-center h-12 w-12 rounded-full border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 transform transition duration-300 cursor-pointer overflow-hidden shadow-sm";
+      const container = document.getElementById("social-media-container");
+      socialMedia.forEach((platform) => {
+        const iconWrapper = document.createElement("div");
+        iconWrapper.className =
+          "relative burn-wrapper group flex items-center justify-center h-12 w-12 rounded-full border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 transform transition duration-300 cursor-pointer overflow-hidden shadow-sm";
         iconWrapper.title = platform.name;
-        
+
         // Create flame elements with enhanced gradients
-        const flame = document.createElement('div');
+        const flame = document.createElement("div");
         flame.className = `flame bg-gradient-to-t ${platform.flameColor}`;
-        
-        const flameInner = document.createElement('div');
+
+        const flameInner = document.createElement("div");
         flameInner.className = `flame-inner bg-gradient-to-t from-yellow-200 via-orange-400 to-red-500`;
-        
+
         // Create the solid color overlay
-        const overlay = document.createElement('div');
+        const overlay = document.createElement("div");
         overlay.className = `absolute inset-0 ${platform.color} opacity-0 group-hover:opacity-10 transition-opacity duration-200 z-7 rounded-full`;
 
-        iconWrapper.innerHTML = flame.outerHTML + flameInner.outerHTML + overlay.outerHTML + platform.lightIcon + platform.darkIcon;
-        
+        iconWrapper.innerHTML =
+          flame.outerHTML +
+          flameInner.outerHTML +
+          overlay.outerHTML +
+          platform.lightIcon +
+          platform.darkIcon;
+
         // Create ember particles
         createFireEmbers(iconWrapper, platform.emberColor);
-        
+
         // Add audio element for this platform
-        const audio = document.createElement('audio');
-        audio.preload = 'auto';
+        const audio = document.createElement("audio");
+        audio.preload = "auto";
         audio.loop = true;
         audio.volume = 0;
         // In real implementation, you would use actual sound files
         // audio.src = platform.soundEffect;
         audioElements[platform.name] = audio;
         document.body.appendChild(audio);
-        
+
         // Enhanced interactions
-        iconWrapper.addEventListener('mouseenter', () => {
+        iconWrapper.addEventListener("mouseenter", () => {
           // Animate embers
           animateEmbers(iconWrapper);
-          
+
           // Fade in sound
           const audio = audioElements[platform.name];
           if (audio) {
             audio.currentTime = 0;
-            audio.play().catch(() => {}); // Catch and ignore autoplay restrictions
+            audio.play().catch(() => { }); // Catch and ignore autoplay restrictions
             let vol = 0;
             const fadeIn = setInterval(() => {
               vol += 0.05;
@@ -353,8 +437,8 @@
             }, 50);
           }
         });
-        
-        iconWrapper.addEventListener('mouseleave', () => {
+
+        iconWrapper.addEventListener("mouseleave", () => {
           // Fade out sound
           const audio = audioElements[platform.name];
           if (audio) {
@@ -370,74 +454,78 @@
             }, 50);
           }
         });
-        
-        iconWrapper.addEventListener('click', (e) => {
+
+        iconWrapper.addEventListener("click", (e) => {
           // Create visual pulse effect on click
           createShockwave(e.clientX, e.clientY, platform.emberColor);
-          
+
           // Open URL with slight delay for effect
           setTimeout(() => {
-            window.open(platform.url, '_blank');
+            window.open(platform.url, "_blank");
           }, 200);
         });
 
         container.appendChild(iconWrapper);
       });
-      
+
       // Add mouse tracking for flame response
-      document.addEventListener('mousemove', (e) => {
-        document.querySelectorAll('.burn-wrapper').forEach(wrapper => {
+      document.addEventListener("mousemove", (e) => {
+        document.querySelectorAll(".burn-wrapper").forEach((wrapper) => {
           const rect = wrapper.getBoundingClientRect();
           const centerX = rect.left + rect.width / 2;
           const centerY = rect.top + rect.height / 2;
-          
+
           // Calculate distance between mouse and icon center
           const distX = e.clientX - centerX;
           const distY = e.clientY - centerY;
           const distance = Math.sqrt(distX * distX + distY * distY);
-          
+
           // If mouse is close enough, create a "lean away" effect on flames
           if (distance < 150) {
-            const flames = wrapper.querySelectorAll('.flame, .flame-inner');
+            const flames = wrapper.querySelectorAll(".flame, .flame-inner");
             const angleRad = Math.atan2(distY, distX);
-            const angleDeg = (angleRad * 180 / Math.PI + 180) % 360; // 0-360 degrees
+            const angleDeg = ((angleRad * 180) / Math.PI + 180) % 360; // 0-360 degrees
             const intensity = Math.max(0, (150 - distance) / 150); // 0 to 1 based on distance
-            
-            flames.forEach(flame => {
+
+            flames.forEach((flame) => {
               // Make flame lean away from cursor
               const leanX = -Math.cos(angleRad) * 5 * intensity;
               const leanY = -Math.sin(angleRad) * 5 * intensity;
-              flame.style.transform = `translate(${leanX}px, ${leanY}px) scale(${1 + intensity * 0.1})`;
-              
+              flame.style.transform = `translate(${leanX}px, ${leanY}px) scale(${1 + intensity * 0.1
+                })`;
+
               // Make flame more intense when cursor is nearby
-              flame.style.filter = `blur(${0.5 + intensity * 0.5}px) brightness(${1 + intensity * 0.3})`;
+              flame.style.filter = `blur(${0.5 + intensity * 0.5
+                }px) brightness(${1 + intensity * 0.3})`;
             });
           } else {
             // Reset when mouse is far away
-            wrapper.querySelectorAll('.flame, .flame-inner').forEach(flame => {
-              flame.style.transform = '';
-              flame.style.filter = '';
-            });
+            wrapper
+              .querySelectorAll(".flame, .flame-inner")
+              .forEach((flame) => {
+                flame.style.transform = "";
+                flame.style.filter = "";
+              });
           }
         });
       });
-      
+
       // Add particle system for more realistic fire
       function createParticleSystem() {
-        const canvas = document.createElement('canvas');
+        const canvas = document.createElement("canvas");
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
-        canvas.style.position = 'fixed';
-        canvas.style.top = '0';
-        canvas.style.left = '0';
-        canvas.style.pointerEvents = 'none';
-        canvas.style.zIndex = '999';
-        canvas.style.opacity = '0.7';
+        canvas.style.position = "fixed";
+        canvas.style.top = "0";
+        canvas.style.left = "0";
+        canvas.style.pointerEvents = "none";
+        canvas.style.zIndex = "999";
+        canvas.style.opacity = "0.7";
         document.body.appendChild(canvas);
-        
-        const ctx = canvas.getContext('2d');
+
+        const ctx = canvas.getContext("2d");
         const particles = [];
-        
+
         function createParticles(x, y, color, count) {
           for (let i = 0; i < count; i++) {
             particles.push({
@@ -448,14 +536,14 @@
               speedX: Math.random() * 2 - 1,
               speedY: -Math.random() * 3 - 1,
               life: Math.random() * 80 + 20,
-              opacity: Math.random() * 0.7 + 0.3
+              opacity: Math.random() * 0.7 + 0.3,
             });
           }
         }
-        
+
         function updateParticles() {
           ctx.clearRect(0, 0, canvas.width, canvas.height);
-          
+
           for (let i = 0; i < particles.length; i++) {
             const p = particles[i];
             p.life--;
@@ -463,46 +551,46 @@
             p.x += p.speedX;
             p.y += p.speedY;
             p.size *= 0.97;
-            
+
             if (p.life <= 0 || p.size <= 0.5 || p.opacity <= 0) {
               particles.splice(i, 1);
               i--;
               continue;
             }
-            
+
             ctx.globalAlpha = p.opacity;
             ctx.fillStyle = p.color;
             ctx.beginPath();
             ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
             ctx.fill();
           }
-          
+
           requestAnimationFrame(updateParticles);
         }
-        
+
         // Start the animation loop
         updateParticles();
-        
+
         // Let's add interaction to generate particles when hovering
-        document.querySelectorAll('.burn-wrapper').forEach(wrapper => {
-          wrapper.addEventListener('mouseover', () => {
+        document.querySelectorAll(".burn-wrapper").forEach((wrapper) => {
+          wrapper.addEventListener("mouseover", () => {
             const rect = wrapper.getBoundingClientRect();
             const baseX = rect.left + rect.width / 2;
             const baseY = rect.top + rect.height / 2;
-            
+
             // Get icon's theme color
             const platformName = wrapper.title;
-            const platform = socialMedia.find(p => p.name === platformName);
-            
+            const platform = socialMedia.find((p) => p.name === platformName);
+
             if (platform) {
               // Generate initial burst of particles
               createParticles(baseX, baseY, platform.emberColor, 15);
-              
+
               // Create particles continuously while hovering
               const interval = setInterval(() => {
-                if (wrapper.matches(':hover')) {
+                if (wrapper.matches(":hover")) {
                   createParticles(
-                    baseX + (Math.random() * 10 - 5), 
+                    baseX + (Math.random() * 10 - 5),
                     baseY + (Math.random() * 10 - 5),
                     platform.emberColor,
                     2
@@ -513,71 +601,75 @@
               }, 100);
             }
           });
-          
-          wrapper.addEventListener('click', (e) => {
+
+          wrapper.addEventListener("click", (e) => {
             const rect = wrapper.getBoundingClientRect();
             const baseX = rect.left + rect.width / 2;
             const baseY = rect.top + rect.height / 2;
-            
+
             // Get icon's theme color
             const platformName = wrapper.title;
-            const platform = socialMedia.find(p => p.name === platformName);
-            
+            const platform = socialMedia.find((p) => p.name === platformName);
+
             if (platform) {
               // Generate explosion of particles on click
               createParticles(baseX, baseY, platform.emberColor, 40);
             }
           });
         });
-        
+
         // Handle window resizing
-        window.addEventListener('resize', () => {
+        window.addEventListener("resize", () => {
           canvas.width = window.innerWidth;
           canvas.height = window.innerHeight;
         });
-        
+
         return canvas;
       }
-      
+
       // Initialize the particle system
       const particleCanvas = createParticleSystem();
-      
+
       // Add heat distortion effect
       function addHeatDistortion() {
-        const heatCanvas = document.createElement('canvas');
+        const heatCanvas = document.createElement("canvas");
         heatCanvas.width = window.innerWidth;
         heatCanvas.height = window.innerHeight;
-        heatCanvas.style.position = 'fixed';
-        heatCanvas.style.top = '0';
-        heatCanvas.style.left = '0';
-        heatCanvas.style.pointerEvents = 'none';
-        heatCanvas.style.zIndex = '998';
-        heatCanvas.style.opacity = '0.3';
-        heatCanvas.style.filter = 'blur(2px)';
+        heatCanvas.style.position = "fixed";
+        heatCanvas.style.top = "0";
+        heatCanvas.style.left = "0";
+        heatCanvas.style.pointerEvents = "none";
+        heatCanvas.style.zIndex = "998";
+        heatCanvas.style.opacity = "0.3";
+        heatCanvas.style.filter = "blur(2px)";
         document.body.appendChild(heatCanvas);
-        
-        const ctx = heatCanvas.getContext('2d');
-        
+
+        const ctx = heatCanvas.getContext("2d");
+
         function drawHeatWave() {
           ctx.clearRect(0, 0, heatCanvas.width, heatCanvas.height);
-          
-          document.querySelectorAll('.burn-wrapper').forEach(wrapper => {
-            if (wrapper.matches(':hover')) {
+
+          document.querySelectorAll(".burn-wrapper").forEach((wrapper) => {
+            if (wrapper.matches(":hover")) {
               const rect = wrapper.getBoundingClientRect();
               const centerX = rect.left + rect.width / 2;
               const centerY = rect.top + rect.height / 2;
-              
+
               // Draw heat wave circles
               const gradient = ctx.createRadialGradient(
-                centerX, centerY, 5,
-                centerX, centerY, 70
+                centerX,
+                centerY,
+                5,
+                centerX,
+                centerY,
+                70
               );
-              
-              gradient.addColorStop(0, 'rgba(255, 255, 255, 0.4)');
-              gradient.addColorStop(0.1, 'rgba(255, 200, 100, 0.2)');
-              gradient.addColorStop(0.4, 'rgba(255, 100, 50, 0.1)');
-              gradient.addColorStop(1, 'rgba(100, 50, 0, 0)');
-              
+
+              gradient.addColorStop(0, "rgba(255, 255, 255, 0.4)");
+              gradient.addColorStop(0.1, "rgba(255, 200, 100, 0.2)");
+              gradient.addColorStop(0.4, "rgba(255, 100, 50, 0.1)");
+              gradient.addColorStop(1, "rgba(100, 50, 0, 0)");
+
               ctx.globalAlpha = 0.3 + Math.sin(Date.now() / 200) * 0.1;
               ctx.fillStyle = gradient;
               ctx.beginPath();
@@ -585,21 +677,22 @@
               ctx.fill();
             }
           });
-          
+
           requestAnimationFrame(drawHeatWave);
         }
-        
+
         drawHeatWave();
-        
-        window.addEventListener('resize', () => {
+
+        window.addEventListener("resize", () => {
           heatCanvas.width = window.innerWidth;
           heatCanvas.height = window.innerHeight;
         });
       }
-      
+
       // Initialize heat distortion
       addHeatDistortion();
     });
   </script>
 </body>
+
 </html>
