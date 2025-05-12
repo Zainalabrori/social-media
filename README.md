@@ -47,3 +47,7 @@ Each social media icon is wrapped in a "burn effect" container that triggers vis
 
 └── README.md
 
+
+## ✨ Author
+
+Made with ❤️ by [Zainal Abrori](https://www.linkedin.com/in/zainal-abrori-bb242829b/)
