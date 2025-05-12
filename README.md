@@ -35,3 +35,15 @@ Each social media icon is wrapped in a "burn effect" container that triggers vis
 
 ## 📁 Folder Structure
 
+📦 root/
+
+├── dark_mode/
+
+│ ├── sun.png
+
+│ └── night.png
+
+├── index.html
+
+└── README.md
+
