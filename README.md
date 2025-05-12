@@ -4,7 +4,7 @@ This is a stylish and interactive single-page web application that displays anim
 
 ## 🌐 Live Demo
 
-[🔗 Visit Live Website]([https://yourdomain.com](https://zainalabrori.github.io/social-media/))
+[🔗 Visit Live Website](https://zainalabrori.github.io/social-media/)
 
 ## 🎯 Features
 
