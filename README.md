@@ -23,7 +23,7 @@ This is a stylish and interactive single-page web application that displays anim
 
 ## 📸 Preview
 
-Coming soon (you can add a GIF or screenshot here)!
+Coming soon!
 
 ## 🧠 How It Works
 
